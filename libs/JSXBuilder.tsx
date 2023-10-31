@@ -3,7 +3,7 @@ import _, { size } from "lodash"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsStarHalf } from "react-icons/bs";
 import { IconType } from "react-icons/lib";
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
 
 type ElementType = {
     value: string,
@@ -48,16 +48,16 @@ export class ComponentFromJSXBuilder {
     }
 
     private buildBrTag(element: ElementType) {
-        return <br key={uuid()}/>
+        return <br key={v4()}/>
     }
 
     private buildBTag(element: ElementType) {
-        return <b key={uuid()}>{element.value}</b>
+        return <b key={v4()}>{element.value}</b>
     }
 
     private buildDivTag(element: ElementType) {
         let elements: any = [];
-        return <div key={uuid()} className={element.class}>
+        return <div key={v4()} className={element.class}>
             {element.value ? element.value : ""}
             {element.children ? this.constructElements(element.children, elements) : ""}
         </div>
@@ -65,7 +65,7 @@ export class ComponentFromJSXBuilder {
 
     private buildSpanTag(element: ElementType) {
         let elements: any = [];
-        return <span key={uuid()} className={element.class}>
+        return <span key={v4()} className={element.class}>
             {element.value ? element.value : ""}
             {element.children ? this.constructElements(element.children, elements) : ""}
         </span>
@@ -74,7 +74,7 @@ export class ComponentFromJSXBuilder {
     private buildIconTag(element: ElementType) {
         const Icon: IconType | null = element.iconType ? this.iconTypeIconsMap[element.iconType] : null;
         return <>
-            {Icon ? <Icon key={uuid()} size={element.size} className={element.class} color={element.color} /> : ""}
+            {Icon ? <Icon key={v4()} size={element.size} className={element.class} color={element.color} /> : ""}
         </>
     }
 

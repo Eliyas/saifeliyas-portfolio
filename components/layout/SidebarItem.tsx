@@ -32,7 +32,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ isImage, url, label, icon: Ic
       setActiveBar(label);
       router.push(href);
     }
-  }, [router, href, auth, onClick]);
+  }, [router, href, onClick, label, setActiveBar]);
 
   return (
     <div onClick={handleClick} className="flex flex-row items-center">

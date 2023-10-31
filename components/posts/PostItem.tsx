@@ -26,14 +26,13 @@ const PostItem: React.FC<PostItemProps> = ({ data = {} as Post, isMainPost, isLa
   const router = useRouter();
   const postRef: any = useRef(null);
   const [isLiked, setIsLiked] = useState(false);
+  const setChildElemtHeigh = () => {
+    if (postRef && postRef.current) setChildHeight(postRef.current.getBoundingClientRect().height);
+  }
 
   useEffect(() => {
     setChildElemtHeigh();
   },[postRef])
-
-  const setChildElemtHeigh = () => {
-    if (postRef && postRef.current) setChildHeight(postRef.current.getBoundingClientRect().height);
-  }
 
   const goToUser = useCallback((ev: any) => {
     ev.stopPropagation();
@@ -42,11 +41,11 @@ const PostItem: React.FC<PostItemProps> = ({ data = {} as Post, isMainPost, isLa
     } else {
       router.push(`/organization/${data.user?.id}`)
     }
-  }, [router, data.user?.id]);
+  }, [router, data.user?.id, data.user?.userType]);
 
-  const goToPost = (type: String) => useCallback(() => {
+  const useGoToPost = (type: String) => useCallback(() => {
     if (type == POST_TYPE.POST) router.push(`/posts/${data.id}`);
-  }, [router, data.id]);
+  }, [router, data.id, type, POST_TYPE.POST]);
 
   const LikeIcon = isLiked ? AiFillHeart : AiOutlineHeart;
 
@@ -63,9 +62,8 @@ const PostItem: React.FC<PostItemProps> = ({ data = {} as Post, isMainPost, isLa
   return (
     <div
       ref={postRef}
-      key={data.id}
-      data-key={data.id}
-      onClick={goToPost(type)}
+      key={isMainPost ? 0 : data.id}
+      onClick={useGoToPost(type)}
       className={`p-[15px] py-0 cursor-pointer hover:bg-neutral-100 
       transition absolute w-[100%] ${isMainPost ? ' pt-[15px]' : ''}`}>
       <div className="flex flex-col items-stretch">

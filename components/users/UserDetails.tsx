@@ -18,7 +18,7 @@ const UserDetails: React.FC<UserBioProps> = ({ userId, userIdMap }) => {
   
   useEffect(() => {
     if(myRef && myRef.current) myRef.current.innerHTML = fetchedUser.bio;
-  }, [myRef]);
+  }, [myRef, fetchedUser.bio]);
 
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) {

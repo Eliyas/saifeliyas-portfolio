@@ -28,7 +28,10 @@ const OrganizationView = ({ data, userIdMap }: { data: DataType; userIdMap: Reco
   };
 
   const { data: fetchedUser, isLoading } = useUser(userIdMap, userId as string);
-
+  const { data: workSectionPosts } = useOrgSectionPosts(data, fetchedUser.id, SECTION_TYPE.WORK);
+  const { data: experienceSectionPosts } = useOrgSectionPosts(data, fetchedUser.id, SECTION_TYPE.EXPERIENCE);
+  const { data: notableWOrkSectionPosts } = useOrgSectionPosts(data, fetchedUser.id, SECTION_TYPE.NOTABLE_WORK);
+  
   if (isLoading || !fetchedUser) {
     return (
       <div className="flex justify-center items-center h-full">
@@ -36,9 +39,6 @@ const OrganizationView = ({ data, userIdMap }: { data: DataType; userIdMap: Reco
       </div>
     )
   }
-  const { data: workSectionPosts } = useOrgSectionPosts(data, fetchedUser.id, SECTION_TYPE.WORK);
-  const { data: experienceSectionPosts } = useOrgSectionPosts(data, fetchedUser.id, SECTION_TYPE.EXPERIENCE);
-  const { data: notableWOrkSectionPosts } = useOrgSectionPosts(data, fetchedUser.id, SECTION_TYPE.NOTABLE_WORK);
 
   const OrganizationTabs = () => (<Box sx={{ width: '100%' }}>
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

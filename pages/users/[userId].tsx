@@ -27,6 +27,9 @@ const UserView = ({ data, userIdMap }: { data: DataType; userIdMap: Record<strin
   };
 
   const { data: fetchedUser, isLoading } = useUser(userIdMap, userId as string);
+  const { data: workSectionPosts } = useSectionPosts(data, [SECTION_TYPE.EXPERIENCE]);
+  const { data: feedBackSectionPosts } = useSectionPosts(data, [SECTION_TYPE.FEEDBACKS]);
+  const { data: skillsSectionPosts } = useSectionPosts(data, [SECTION_TYPE.SKILLS]);
 
   if (isLoading || !fetchedUser) {
     return (
@@ -35,10 +38,7 @@ const UserView = ({ data, userIdMap }: { data: DataType; userIdMap: Record<strin
       </div>
     )
   }
-  const { data: workSectionPosts } = useSectionPosts(data, [SECTION_TYPE.EXPERIENCE]);
-  const { data: feedBackSectionPosts } = useSectionPosts(data, [SECTION_TYPE.FEEDBACKS]);
-  const { data: skillsSectionPosts } = useSectionPosts(data, [SECTION_TYPE.SKILLS]);
-
+  
   const UserTabs = () => (<Box sx={{ width: '100%' }}>
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
       <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

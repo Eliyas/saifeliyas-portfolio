@@ -19,7 +19,6 @@ export default function Home({ data }: { data: DataType }) {
 
 
 export const getServerSideProps = async () => {
-  
   let response = await axios.get(`${BASE_URL}/api/data`);
   return {
     props: { data: response.data }

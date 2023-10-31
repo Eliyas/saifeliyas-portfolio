@@ -18,9 +18,16 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId, data: posts }) => {
     if (replyParentRef && replyParentRef.current) {
       let previousElementsHeight = 0;
       let allChildElementHeight = 0;
-      replyParentRef.current.childNodes.forEach((element: HTMLElement, index: number) => {
+      let childNodes: any = [];
+      replyParentRef.current.childNodes.forEach((wrapperElement: HTMLElement) => {
+        wrapperElement.childNodes.forEach((element: any) => {
+          childNodes.push(element);
+        });
+      });
+
+      childNodes.forEach((element: HTMLElement, index: number) => {
         if (index > 0) {
-          const previousElement = replyParentRef.current.childNodes[index - 1];
+          const previousElement = childNodes[index - 1];
           const boundingRect = previousElement.getBoundingClientRect();
           const elementHeight = boundingRect.height + previousElementsHeight;
           element.style.transform = `translateY(${elementHeight}px)`;
@@ -40,20 +47,20 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId, data: posts }) => {
 
   return (
     <div className='min-h-[2000px] relative' ref={replyParentRef}>
-      {posts.map((post: Post, index: number) => (
+      {posts.map((post: Post) => (
 
-        <>
-          <PostItem type={POST_TYPE.POST} data={post} isMainPost={true} isLastReply={!post.replies || !post.replies.length} 
-          setChildHeight={setChildHeight}/>
+        <div key={post.id} >
+          <PostItem type={POST_TYPE.POST} data={post} isMainPost={true} isLastReply={!post.replies || !post.replies.length}
+            setChildHeight={setChildHeight} />
 
           {
             post.replies && post.replies.length > 0 ? post.replies?.map((reply, index) => (
-              <PostItem type={POST_TYPE.REPLAY} data={reply} setChildHeight={setChildHeight}
+              <PostItem type={POST_TYPE.REPLAY} data={reply} setChildHeight={setChildHeight} key={index}
                 isLastReply={post.replies?.length ? index == (post.replies?.length - 1) : false} />
             )) : ""
           }
-          <div className='w-[100%] h-[0.8px] bg-[#eff3f4]' key={index+1} data-key={index} ></div>
-        </>
+          <div className='w-[100%] h-[0.8px] bg-[#eff3f4]'></div>
+        </div>
 
       ))}
 

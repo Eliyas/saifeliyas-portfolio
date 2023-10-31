@@ -6,8 +6,8 @@ import { BiLinkAlt } from 'react-icons/bi';
 import Link from 'next/link';
 import { User } from '../../common/models';
 
-const FollowBar = ({ userIdMap }: { userIdMap: Record<string, User> }) => {
-  const { data: users = [] } = useUsers(userIdMap);
+const FollowBar = () => {
+  const { data: users = [] } = useUsers();
 
   if (users.length === 0) {
     return null;

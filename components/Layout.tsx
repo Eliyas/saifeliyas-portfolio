@@ -4,7 +4,7 @@ import FollowBar from "@/components/layout/FollowBar"
 import Sidebar from "@/components/layout/Sidebar"
 import { User } from '@/common/models';
 
-const Layout: React.FC<{ children: React.ReactNode; userIdMap: Record<string, User> }> = (props) => {
+const Layout: React.FC<{ children: React.ReactNode;}> = (props) => {
   return (
     <div className="min-h-screen h-[100%] bg-[#FFFFFF]">
       <div className="container h-full mx-auto xl:px-30 max-w-8xl">
@@ -19,7 +19,7 @@ const Layout: React.FC<{ children: React.ReactNode; userIdMap: Record<string, Us
           ">
             {props.children}
           </div>
-          <FollowBar userIdMap={props.userIdMap}/>
+          <FollowBar/>
         </div>
      </div>
     </div>
