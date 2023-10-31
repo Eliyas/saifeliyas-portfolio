@@ -82,6 +82,7 @@ export const SIDEBAR_TYPE = {
     ABOUT: "About",
     CONTACT: "Contact",
     HIRE_ME: "Hire ME",
+    RESUME: "Resume",
 }
 
 export const ELEMENT_TYPE = {

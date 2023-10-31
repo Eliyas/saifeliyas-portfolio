@@ -63,7 +63,7 @@ const UserView = ({ data, userIdMap }: { data: DataType; userIdMap: Record<strin
           <Image src={fetchedUser.coverImage} fill alt="Cover Image" style={{ objectFit: 'cover' }}/>
         )}
         <div className="absolute -bottom-16 left-4">
-          <Avatar isLarge={true} hasBorder userId={userId as string} />
+          <Avatar isLarge={true} hasBorder userId={userId as string}  url={fetchedUser.profileImage}/>
         </div>
       </div>
       <UserDetails userId={userId as string} userIdMap={userIdMap}/>

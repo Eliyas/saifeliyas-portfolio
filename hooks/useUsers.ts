@@ -5,10 +5,10 @@ import fetcher from '@/libs/fetcher';
 
 const useUsers = (userIdMap?: Record<string, User>) => {
   let isLoading = true;
-  const userMap = userIdMap;
+  let userMap = userIdMap;
   if(!userIdMap) {
     let response: any = useSWR(`/api/data`, fetcher);
-    userIdMap = response.userIdMap;
+    userMap = response.userIdMap;
   }
   const data: User[] = userMap ? Object.values(userMap) : [];
   isLoading = false;

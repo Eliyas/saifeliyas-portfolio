@@ -1,4 +1,5 @@
 import { BiBriefcaseAlt, BiLogOut, BiSolidContact, BiUser } from 'react-icons/bi';
+import { ImProfile } from 'react-icons/im';
 import { GrUserExpert, GrUserWorker } from 'react-icons/gr';
 import { BsHouseFill } from 'react-icons/bs';
 import { FaUser, FaUserTie } from 'react-icons/fa';
@@ -64,6 +65,14 @@ const Sidebar = () => {
       auth: true,
       isImage: false,
       url: '/images/experience.png'
+    },
+    {
+      icon: ImProfile,
+      label: SIDEBAR_TYPE.RESUME,
+      href: `/Mohamed_Eliyas_CV.pdf`,
+      auth: true,
+      isImage: false,
+      url: ''
     },
     {
       icon: FaUserTie,

@@ -30,7 +30,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ isImage, url, label, icon: Ic
     }
     if (href) {
       setActiveBar(label);
-      router.push(href);
+      if(href.includes(".pdf")) {
+        window.open(href, "_blank");
+      } else {
+        router.push(href);
+      }
     }
   }, [router, href, onClick, label, setActiveBar]);
 
