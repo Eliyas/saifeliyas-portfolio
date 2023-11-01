@@ -1,4 +1,4 @@
-# X (TWITTER) Inspired portfolio with React, Tailwind, Next, Prisma, Mongo, NextAuth & Vercel (2023)
+# X (TWITTER) Inspired portfolio with React, Tailwind, Next & deployed in Netlify (2023)
 
 ### Prerequisites
 

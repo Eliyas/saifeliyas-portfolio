@@ -8,12 +8,13 @@ import Form from "@/components/NewTweet";
 import PostItem from "@/components/posts/PostItem";
 import Comments from "@/components/comments/Comments";
 import { useEffect, useRef, useState } from "react";
-import { DataType, POST_TYPE } from "@/common/models";
+import { DataType, POST_TYPE, Post } from "@/common/models";
 import useComments from "@/hooks/useComments";
 import Comment from "@/components/comments/Comment";
 import _ from "lodash";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
+import data from "@/data/data";
 
 
 const PostView = ({ data }: { data: DataType }) => {
@@ -83,10 +84,33 @@ const PostView = ({ data }: { data: DataType }) => {
 
 export default PostView;
 
-export const getServerSideProps = async () => {
-  
-  let response = await axios.get(`${BASE_URL}/api/data`);
+
+export async function getStaticPaths() {
+  // When this is true (in preview environments) don't
+  // prerender any static pages
+  // (faster builds, but slower initial page load)
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+      paths: [],
+      fallback: 'blocking',
+    }
+  }
+ 
+  // Get the paths we want to prerender based on posts
+  // In production environments, prerender all pages
+  // (slower builds, but faster initial page load)
+  const posts = data.posts;
+  const paths = posts.map((post: Post) => ({
+    params: { postId: post.id },
+  }))
+ 
+  // { fallback: false } means other routes should 404
+  return { paths, fallback: false }
+}
+
+export const getStaticProps = async () => {
+  const staticData = data;
   return {
-    props: { data: response.data }
+    props: { data: staticData, userIdMap: staticData.userIdMap }
   };
 };

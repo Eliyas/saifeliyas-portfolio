@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
  
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   console.log("BASE_URL :"+ BASE_URL);
   let response = await axios.get(`${BASE_URL}/api/data`);
   return {

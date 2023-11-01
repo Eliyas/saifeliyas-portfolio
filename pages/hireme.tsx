@@ -1,5 +1,6 @@
 import { User } from "@/common/models";
 import Header from "@/components/Header"
+import data from "@/data/data";
 import useCurrentUser from "@/hooks/useCurrentUser"
 import { BASE_URL } from "@/utils";
 import axios from "axios";
@@ -40,10 +41,9 @@ export default function HireMe({ userIdMap }: { userIdMap: Record<string, User> 
 }
 
 
-export const getServerSideProps = async () => {
-    
-    let response = await axios.get(`${BASE_URL}/api/data`);
+export const getStaticProps = async () => {
+    const staticData = data;
     return {
-        props: { data: response.data, userIdMap: response.data.userIdMap }
+      props: { data: staticData, userIdMap: staticData.userIdMap }
     };
 };

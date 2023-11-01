@@ -14,8 +14,7 @@ import { DataType, SECTION_TYPE, User } from "@/common/models";
 import useOrgSectionPosts from "@/hooks/useOrgSectionPosts";
 import Image from "next/image";
 import Avatar from "@/components/Avatar";
-import { BASE_URL } from "@/utils";
-import axios from "axios";
+import data from "@/data/data";
 
 
 const OrganizationView = ({ data, userIdMap }: { data: DataType; userIdMap: Record<string, User> }) => {
@@ -75,10 +74,32 @@ const OrganizationView = ({ data, userIdMap }: { data: DataType; userIdMap: Reco
 export default OrganizationView;
 
 
-export const getServerSideProps = async () => {
-  
-  let response = await axios.get(`${BASE_URL}/api/data`);
+export async function getStaticPaths() {
+  // When this is true (in preview environments) don't
+  // prerender any static pages
+  // (faster builds, but slower initial page load)
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+      paths: [],
+      fallback: 'blocking',
+    }
+  }
+ 
+  // Get the paths we want to prerender based on posts
+  // In production environments, prerender all pages
+  // (slower builds, but faster initial page load)
+  const userIdMap = data.userIdMap;
+  const paths = Object.keys(userIdMap).map((userId: string) => ({
+    params: { userId: userId },
+  }))
+ 
+  // { fallback: false } means other routes should 404
+  return { paths, fallback: false }
+}
+
+export const getStaticProps = async () => {
+  const staticData = data;
   return {
-    props: { data: response.data, userIdMap: response.data.userIdMap }
+    props: { data: staticData, userIdMap: staticData.userIdMap }
   };
 };

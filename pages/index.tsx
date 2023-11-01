@@ -5,6 +5,7 @@ import { DataType, SECTION_TYPE } from "@/common/models"
 import useHomePosts from "@/hooks/useSectionPosts";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
+import data from "@/data/data";
 
 export default function Home({ data }: { data: DataType }) {
   const { data: posts } = useHomePosts(data, [SECTION_TYPE.EXPERIENCE]);
@@ -18,9 +19,9 @@ export default function Home({ data }: { data: DataType }) {
 }
 
 
-export const getServerSideProps = async () => {
-  let response = await axios.get(`${BASE_URL}/api/data`);
+export const getStaticProps = async () => {
+  const staticData = data;
   return {
-    props: { data: response.data }
+    props: { data: staticData, userIdMap: staticData.userIdMap }
   };
 };

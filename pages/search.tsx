@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import data from "@/data/data";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
 
@@ -14,10 +15,9 @@ export default Search;
 
 
 
-export const getServerSideProps = async () => {
-  
-  let response = await axios.get(`${BASE_URL}/api/data`);
+export const getStaticProps = async () => {
+  const staticData = data;
   return {
-    props: { data: response.data }
+    props: { data: staticData }
   };
 };
