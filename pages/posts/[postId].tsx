@@ -6,14 +6,11 @@ import usePost from "@/hooks/usePost";
 import Header from "@/components/Header";
 import Form from "@/components/NewTweet";
 import PostItem from "@/components/posts/PostItem";
-import Comments from "@/components/comments/Comments";
 import { useEffect, useRef, useState } from "react";
 import { DataType, POST_TYPE, Post } from "@/common/models";
 import useComments from "@/hooks/useComments";
 import Comment from "@/components/comments/Comment";
 import _ from "lodash";
-import { BASE_URL } from "@/utils";
-import axios from "axios";
 import data from "@/data/data";
 
 
@@ -111,6 +108,6 @@ export async function getStaticPaths() {
 export const getStaticProps = async () => {
   const staticData = data;
   return {
-    props: { data: staticData, userIdMap: staticData.userIdMap }
+    props: { data: staticData }
   };
 };

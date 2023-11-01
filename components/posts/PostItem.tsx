@@ -65,7 +65,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {} as Post, isMainPost, isLa
       key={isMainPost ? 0 : data.id}
       onClick={useGoToPost(type)}
       className={`p-[15px] py-0 cursor-pointer hover:bg-neutral-100 
-      transition absolute w-[100%] ${isMainPost ? ' pt-[15px]' : ''}`}>
+      transition-opacity absolute w-[100%] ${isMainPost ? ' pt-[15px]' : ''}`}>
       <div className="flex flex-col items-stretch">
 
         {!isMainPost && <div className='flex flex-row items-stretch mb-[4px]'>

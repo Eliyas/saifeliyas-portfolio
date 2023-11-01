@@ -36,7 +36,7 @@ const Comment: React.FC<CommentProps> = ({ data = {} }) => {
         transition w-[100%]
       ">
       <div className="flex flex-row items-start gap-3">
-        <Avatar userId={data.userId} />
+        <Avatar userId={data.userId} url={data.user.profileImage}/>
         <div>
           <div className="flex flex-row items-center gap-2">
             <p
