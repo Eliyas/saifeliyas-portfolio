@@ -1,11 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { IconType } from "react-icons";
 import { useRouter } from 'next/router';
-
-import useCurrentUser from '@/hooks/useCurrentUser';
 import { BsDot } from 'react-icons/bs';
 import Image from 'next/image';
-import { SIDEBAR_TYPE } from '@/common/models';
+import { MenuContext } from '@/pages/_app';
 
 interface SidebarItemProps {
   label: string;
@@ -23,6 +21,7 @@ interface SidebarItemProps {
 const SidebarItem: React.FC<SidebarItemProps> = ({ isImage, url, label, icon: Icon, href, auth,
    onClick, alert, activeBar, setActiveBar }) => {
   const router = useRouter();
+  const { setTitle, setIsOpen } = useContext(MenuContext);
 
   const handleClick = useCallback(() => {
     if (onClick) {
@@ -30,6 +29,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ isImage, url, label, icon: Ic
     }
     if (href) {
       setActiveBar(label);
+      setTitle(label);
+      setIsOpen(false);
       if(href.includes(".pdf")) {
         window.open(href, "_blank");
       } else {

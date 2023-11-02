@@ -1,13 +1,7 @@
-import { BiBriefcaseAlt, BiLogOut, BiSolidContact, BiUser } from 'react-icons/bi';
-import { ImProfile } from 'react-icons/im';
-import { GrUserExpert, GrUserWorker } from 'react-icons/gr';
-import { BsHouseFill } from 'react-icons/bs';
-import { FaUser, FaUserTie } from 'react-icons/fa';
-
 import SidebarItem from './SidebarItem';
 import SidebarLogo from './SidebarLogo';
 import SidebarTweetButton from './SidebarTweetButton';
-import { SECTION_TYPE, SIDEBAR_TYPE, MENU_ITEMS } from '../../common/models';
+import { SIDEBAR_TYPE, MENU_ITEMS } from '../../common/models';
 import { useState } from 'react';
 
 const Sidebar = () => {

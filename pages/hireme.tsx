@@ -12,8 +12,6 @@ export default function HireMe({ userIdMap }: { userIdMap: Record<string, User> 
     const { data: user } = useCurrentUser(userIdMap);
     return (
         <>
-            <Header label="Hire Me" />
-
             <div className="flex flex-col justify-center">
                 {user.upWork && <div className="flex flex-row justify-center gap-4 p-5 text-[#0a66c2] cursor-pointer hover:text-[#34587d]">
                     <Link href={user.upWork} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center w-[260px]">

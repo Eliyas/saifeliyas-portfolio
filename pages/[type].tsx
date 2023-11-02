@@ -9,12 +9,7 @@ export default function Posts({ data }: { data: DataType }) {
   const router = useRouter();
   const { type } = router.query;
   const { data: posts } = useSectionPosts(data, [type as string]);
-  return (
-    <>
-      <Header label={type} />
-      <PostFeed data={posts} />
-    </>
-  )
+  return (<PostFeed data={posts} />)
 }
 
 
@@ -28,7 +23,7 @@ export async function getStaticPaths() {
       fallback: 'blocking',
     }
   }
- 
+
   // Get the paths we want to prerender based on posts
   // In production environments, prerender all pages
   // (slower builds, but faster initial page load)
@@ -36,7 +31,7 @@ export async function getStaticPaths() {
   const paths = posts.map((post: Post) => ({
     params: { type: post.sectionType },
   }))
- 
+
   // { fallback: false } means other routes should 404
   return { paths, fallback: false }
 }

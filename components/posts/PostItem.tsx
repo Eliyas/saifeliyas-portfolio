@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, useContext } from 'react';
 import { AiFillHeart, AiOutlineHeart, AiOutlineMessage, AiOutlineStar } from 'react-icons/ai';
 import { formatDistanceToNowStrict } from 'date-fns';
 import parse from 'html-react-parser'
@@ -7,6 +7,7 @@ import Avatar from '../Avatar';
 import { POST_TYPE, Post, USER_TYPE } from '../../common/models';
 import Image from 'next/image';
 import { ComponentFromJSXBuilder } from '@/libs/JSXBuilder';
+import { MenuContext } from '@/pages/_app';
 interface PostItemProps {
   data: Post;
   type: string;
@@ -26,16 +27,20 @@ const PostItem: React.FC<PostItemProps> = ({ data = {} as Post, isMainPost, isLa
   const router = useRouter();
   const postRef: any = useRef(null);
   const [isLiked, setIsLiked] = useState(false);
-  const setChildElemtHeigh = () => {
+  const { setTitle, setShowBackArrow } = useContext(MenuContext);
+
+  const setChildElementHeigh = () => {
     if (postRef && postRef.current) setChildHeight(postRef.current.getBoundingClientRect().height);
   }
 
   useEffect(() => {
-    setChildElemtHeigh();
+    setChildElementHeigh();
   },[postRef])
 
   const goToUser = useCallback((ev: any) => {
     ev.stopPropagation();
+    setTitle(data.user?.name as string);
+    setShowBackArrow(true);
     if(data.user?.userType == USER_TYPE.INDIVIDUAL) {
       router.push(`/users/${data.user?.id}`)
     } else {
@@ -44,6 +49,8 @@ const PostItem: React.FC<PostItemProps> = ({ data = {} as Post, isMainPost, isLa
   }, [router, data.user?.id, data.user?.userType]);
 
   const useGoToPost = (type: String) => useCallback(() => {
+    setTitle("Tweet");
+    setShowBackArrow(true);
     if (type == POST_TYPE.POST) router.push(`/posts/${data.id}`);
   }, [router, data.id, type, POST_TYPE.POST]);
 
@@ -111,7 +118,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {} as Post, isMainPost, isLa
               {data.jsxBody ? componentFromJSXBuilder.build(data.jsxBody) : data.body ? parse(data.body) : ""}
               {data?.images && data.images.map((image, index: number) => (
                 <div className='mt-4' key={index}>
-                  <Image onLoad={setChildElemtHeigh} src={image.url} alt={image.alt} 
+                  <Image onLoad={setChildElementHeigh} src={image.url} alt={image.alt} 
                   width={Number(image.width)} height={Number(image.height)}/>
                 </div>
               ))}

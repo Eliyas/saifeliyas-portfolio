@@ -56,7 +56,6 @@ const OrganizationView = ({ data, userIdMap }: { data: DataType; userIdMap: Reco
 
   return (
     <>
-      <Header showBackArrow label={fetchedUser?.name}/>
       <div className="bg-neutral-200 h-44 relative">
         {fetchedUser?.coverImage && (
           <Image src={fetchedUser.coverImage} fill alt="Cover Image" style={{ objectFit: 'cover' }}/>

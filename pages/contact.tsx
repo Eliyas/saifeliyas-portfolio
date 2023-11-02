@@ -15,8 +15,6 @@ export default function Contact({ userIdMap }: { userIdMap: Record<string, User>
     const { data: user } = useCurrentUser(userIdMap);
     return (
         <>
-            <Header label="Contact" />
-
             <div className="p-5 flex flex-col justify-center items-center">
                 {user.mobile && <div className="w-[260px] flex flex-row gap-4 p-5 text-[#0a66c2] cursor-pointer hover:text-[#34587d]">
                     <GiSmartphone size={30} />
@@ -51,9 +49,6 @@ export default function Contact({ userIdMap }: { userIdMap: Record<string, User>
                 </div>
 
             </div>
-
-
-
         </>
     )
 }
@@ -61,7 +56,7 @@ export default function Contact({ userIdMap }: { userIdMap: Record<string, User>
 
 export const getStaticProps = async () => {
     const staticData = data;
-  return {
-    props: { userIdMap: staticData.userIdMap }
-  };
+    return {
+        props: { userIdMap: staticData.userIdMap }
+    };
 };

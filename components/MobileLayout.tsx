@@ -10,6 +10,7 @@ const MobileLayout: React.FC<{ children: React.ReactNode;}> = (props) => {
             className="w-full
               border-x-[1px] 
               border-neutral-100
+              pt-[72px]
           ">
             {props.children}
           </div>

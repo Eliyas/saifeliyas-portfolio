@@ -59,7 +59,6 @@ const PostView = ({ data }: { data: DataType }) => {
 
   return (
     <>
-      <Header showBackArrow label="Tweet" />
       <div className="relative" ref={replyParentRef}>
         <PostItem type={POST_TYPE.POST} data={fetchedPost} isMainPost={true} isLastReply={!fetchedPost.replies}
           setChildHeight={setChildHeight} />
@@ -74,7 +73,6 @@ const PostView = ({ data }: { data: DataType }) => {
           <Comment key={comment.id} data={comment} />
         ))}
       </div>
-
     </>
   );
 }

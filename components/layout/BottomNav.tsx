@@ -23,7 +23,7 @@ const BottomNav: React.FC = () => {
 
 
   return (
-    <div className="flex items-center justify-around h-[50px] z-50
+    <div className="flex items-center justify-around h-[60px] z-50
      w-full fixed bottom-0 bg-white border-t border-gray-100">
      <BsHouseFill  size={30} onClick={() => handleClick("")}/>
      <BiBriefcaseAlt  size={30} onClick={() => handleClick(SECTION_TYPE.WORK,)} />
