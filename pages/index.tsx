@@ -6,12 +6,13 @@ import useHomePosts from "@/hooks/useSectionPosts";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
 import data from "@/data/data";
+import { MenuContext } from "./_app";
+import { useContext, useEffect } from "react";
 
 export default function Home({ data }: { data: DataType }) {
   const { data: posts } = useHomePosts(data, [SECTION_TYPE.EXPERIENCE]);
   return (
     <>
-      <Header label="Home" />
       <Form placeholder="Welcome!" />
       <PostFeed data={posts} />
     </>

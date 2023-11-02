@@ -43,23 +43,25 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ isImage, url, label, icon: Ic
       <div className="
         relative
         rounded-full 
+        hidden
         h-14
         w-14
-        flex
         items-center
         justify-center 
         p-4
         hover:bg-slate-300 
         hover:bg-opacity-10 
-        cursor-pointer 
+        cursor-pointer
+        xs:hidden 
         lg:hidden
       ">
         {!isImage ? <Icon size={28} /> : <Image src={url} alt='img' width={25} height={25} />}
         {alert ? <BsDot className="text-sky-500 absolute -top-4 left-0" size={70} /> : null}
       </div>
       <div className="
-        relative
-        hidden 
+        relative 
+        flex
+        xs:flex
         lg:flex 
         items-row 
         gap-4 
@@ -71,7 +73,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ isImage, url, label, icon: Ic
         items-center
       ">
         {!isImage ? <Icon size={24} /> : <Image src={url} alt='img' width={25} height={25} />}
-        <p className={`hidden lg:block text-black text-xl ${activeBar == label ? 'font-bold' : ''}`}>
+        <p className={`block xs:max-lg:hidden lg:block text-black text-xl ${activeBar == label ? 'font-bold' : ''}`}>
           {label}
         </p>
         {alert ? <BsDot className="text-sky-500 absolute -top-4 left-0" size={70} /> : null}

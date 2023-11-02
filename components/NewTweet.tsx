@@ -10,7 +10,7 @@ interface FormProps {
 const Form: React.FC<FormProps> = ({ placeholder }) => {
 
   return (
-    <div className="border-b-[1px] border-neutral-100 px-5 py-2">
+    <div className="border-b-[1px] border-neutral-100 px-5 py-2 hidden sm:max-2xl:block">
         <div className="flex flex-row gap-4">
           <div>
             <Avatar />

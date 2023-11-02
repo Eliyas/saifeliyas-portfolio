@@ -6,6 +6,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'xs': '500px',
+      'sm': '640px', 
+      'md': '1024px', 
+      'lg': '1280px', 
+      'xl': '1920px', 
+      '2xl': '2140px'
+    },
     extend: {
       keyframes: {
         commentsHeighlight: {

@@ -14,8 +14,6 @@ import { DataType, SECTION_TYPE, User } from "@/common/models";
 import useSectionPosts from "@/hooks/useSectionPosts";
 import Image from "next/image";
 import Avatar from "@/components/Avatar";
-import { BASE_URL } from "@/utils";
-import axios from "axios";
 import data from "@/data/data";
 
 const UserView = ({ data, userIdMap }: { data: DataType; userIdMap: Record<string, User> }) => {

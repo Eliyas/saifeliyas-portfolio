@@ -1,3 +1,8 @@
+import { BiBriefcaseAlt, BiSolidContact, BiUser } from "react-icons/bi";
+import { BsHouseFill } from "react-icons/bs";
+import { FaUserTie } from "react-icons/fa";
+import { GrUserExpert, GrUserWorker } from "react-icons/gr";
+import { ImProfile } from "react-icons/im";
 
 
 export interface User {
@@ -92,3 +97,75 @@ export const ELEMENT_TYPE = {
     ICON_TAG: "ICON_TAG",
     SPAN_TAG: "SPAN_TAG",
 }
+
+export const MENU_ITEMS = [
+    {
+      icon: BsHouseFill,
+      label: SIDEBAR_TYPE.HOME,
+      href: '/',
+      url: ''
+    },
+    {
+      icon: BiBriefcaseAlt,
+      label: SIDEBAR_TYPE.WORK,
+      href: `/${SECTION_TYPE.WORK}`,
+      auth: true,
+      url: ''
+    },
+    {
+      icon: GrUserExpert,
+      label: SIDEBAR_TYPE.EXPERIENCE,
+      href: `/${SECTION_TYPE.EXPERIENCE}`,
+      auth: true,
+      isImage: false,
+      url: '/images/experience.png'
+    },
+    {
+      icon: GrUserExpert,
+      label: SIDEBAR_TYPE.SKILLS,
+      href: `/${SECTION_TYPE.SKILLS}`,
+      auth: true,
+      isImage: true,
+      url: '/images/skills2.png'
+    },
+    {
+      icon: GrUserWorker,
+      label: SIDEBAR_TYPE.NOTABLE_WORK,
+      href: `/${SECTION_TYPE.NOTABLE_WORK}`,
+      auth: true,
+      isImage: false,
+      url: '/images/experience.png'
+    },
+    {
+      icon: BiUser,
+      label: SIDEBAR_TYPE.ABOUT,
+      href: `/users/3`,
+      auth: true,
+      isImage: false,
+      url: '/images/experience.png'
+    },
+    {
+      icon: BiSolidContact,
+      label: SIDEBAR_TYPE.CONTACT,
+      href: `/contact`,
+      auth: true,
+      isImage: false,
+      url: '/images/experience.png'
+    },
+    {
+      icon: ImProfile,
+      label: SIDEBAR_TYPE.RESUME,
+      href: `/Mohamed_Eliyas_CV.pdf`,
+      auth: true,
+      isImage: false,
+      url: ''
+    },
+    {
+      icon: FaUserTie,
+      label: SIDEBAR_TYPE.HIRE_ME,
+      href: `/hireme`,
+      auth: true,
+      isImage: false,
+      url: '/images/experience.png'
+    }
+  ]
