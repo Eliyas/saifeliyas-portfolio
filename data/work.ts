@@ -26,7 +26,7 @@ const works = [
           <b>About Product:</b> <br/> CLM Contract Lifecycle Management software, Providing  
           <ul className="list-disc p-4">
              <li>Central contract repository</li>
-             <li>Powerfull Document and content search fearture.</li>
+             <li>Powerfull Document and content search feature.</li>
              <li>Configurable Reminders and Milestones. </li>
              <li>Collaborative platform in every lifecycle of contract ex: Review and Approval Work Flow, Task Assignment, and more.</li>
              <li>Contract E-Sign and workflow creation. </li>
@@ -108,16 +108,38 @@ const works = [
                 <li>Establish enterprise-wide IT ecosystem governance and automate all process chains for superior orchestration.</li>
             </ul>`,
                 "createdAt": "",
-                "sortOrder": 1000,
+                "sortOrder": 1001,
                 "userId": "3"
             },
             {
                 "id": "fdd48829-553c-4527-96dc-5a52932f0d54",
                 "images": [{ url: "/images/valholla-Info.png", alt: "client", "width": "400", "height": "400" }],
                 "createdAt": "",
-                "sortOrder": 1000,
+                "sortOrder": 1002,
                 "userId": "3"
             },
+            {
+                "id": "c18e0eed-68e8-46a8-8725-7f4b9c1dc81f",
+                "body": `Highly Highly Customizable dashboard where you can change all types of charts, duration, and custom data points with multiple levels of chart drill-down to visualize related data.`,
+                "images": [{ url: "/images/dashboard.jpeg", alt: "client", "width": "400", "height": "400" }],
+                "createdAt": "",
+                "sortOrder": 1003,
+                "userId": "3"
+            },
+            {
+                "id": "fc7b2b91-c764-4dd7-bbc5-9184931ad90f",
+                "body": `<p>Report Builder</p>
+                <ul className="list-disc p-4">
+                    <li>Pull all available tables, and columns, group and aggregate them, and visualize them in different types of charts.</li>
+                    <li>Created reports can be bookmarked to the dashboard or scheduled to send emails to users.</li>
+                    <li>Don't know how to do it? Pick the report from pre-build report templates and visualize it.</li>
+                </ul>
+                `,
+                "images": [{ url: "/images/reports-builder.jpeg", alt: "client", "width": "400", "height": "400" }],
+                "createdAt": "",
+                "sortOrder": 1003,
+                "userId": "3"
+            }
         ],
         "likedIds": []
     },

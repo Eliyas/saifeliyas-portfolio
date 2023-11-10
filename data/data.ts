@@ -83,12 +83,12 @@ const data: any = {
                         document tree structure view screen load time.
                     </li>
                      <li>
-                        Securing application from vulnerability by frequently checking library
+                        Securing applications from vulnerability by frequently checking library
                          issues and upgrading to the latest versions.
                     </li>
                      <li>
                         <b>Increased client satisfaction by 30%</b> by integrating requested
-                        third-party tools and feature changes request done shortly by enabling
+                        third-party tools and feature change requests done shortly by enabling
                         configurations.
                      </li>
                   </ul>`,
@@ -171,9 +171,9 @@ const data: any = {
                   revenue-making products.</li>
                   <li>Guided team in all aspects of technical complications and learning which
                   <b>reduced 30% time</b> and a lot of money in developing products.</li>
-                  <li>Maintaining code quality and security which also helps the company to
+                  <li>Maintaining code quality and security, helps the company to
                   attain <b>ISO certifications</b> by enabling vulnerability tools, unit testing, and
-                  code reviewing.</li>
+                  code reviews.</li>
                </ul>`,
                "createdAt": "",
                "comments": [],
